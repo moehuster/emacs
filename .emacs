@@ -47,7 +47,8 @@
 ;; M-x (un)tabify use space/tab
 ;; whitespace-cleanup cleanup trailing space
 (setq-default indent-tabs-mode nil)
-(setq default-tab-width 4)
+(setq default-tab-width 4
+	  c-basic-offset 4)
 
 ;; Scrool setting
 (setq scroll-margin 3
@@ -70,7 +71,7 @@
 (global-set-key (kbd "C-<return>") 'newline)
 (global-set-key (kbd "RET") 'newline-and-indent)
 
-;; Setting Englist Font
+;; Setting English Font
 (set-face-attribute
   'default nil :font "DejaVu Sans Mono 10")
 ;; Setting CJK Font
@@ -78,3 +79,12 @@
   (set-fontset-font (frame-parameter nil 'font)
 					charset
 					(font-spec :family "Microsoft YaHei")))
+
+(require 'wcy-swbuff)
+(global-set-key (kbd "<C-tab>") 'wcy-switch-buffer-forward)
+(global-set-key (kbd "<C-S-kp-tab>") 'wcy-switch-buffer-backward)
+
+;; whitespace mode
+(require 'whitespace)
+(setq whitespace-style '(face empty tabs lines-tail trailing))
+(global-whitespace-mode t)
